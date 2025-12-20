@@ -106,6 +106,12 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	private String prepareErrorSummaryMessage(ResponseEntity<String> httpServiceResponse) {
+		
+		if(true) {
+			return httpServiceResponse.getBody();
+		}
+		
+		
 		String promptTemplate = """
 				Given the following json message from a third-party API, read the entire JSON, and summarize in 1 line:
 				Instructions:
@@ -132,38 +138,6 @@ public class PaymentServiceImpl implements PaymentService {
 		return response;
 	}
 
-	@PostConstruct
-	public String onInit() {
-		String promptTemplate = """
-				Given the following json message from a third-party API, read the entire JSON, and summarize in 1 line:
-				Instructions:
-				1. Put a short, simple summary. Which exactly represents what error happened.
-				2. Max length of summary less than 200 characters.
-				3. Keep the output clear and concise.
-				4. Summarize as message that we can send in API response to the client.
-				5. Dont point any info to read external documentation or link.
-				{error_json}
-				""";
-		
-		String errorJson = "{\n" +
-				"  \"error\": {\n" +
-				"    \"code\": \"parameter_missing\",\n" +
-				"    \"doc_url\": \"https://stripe.com/docs/error-codes/parameter-missing\",\n" +
-				"    \"message\": \"Missing required param: line_items[0][price_data][currency].\",\n" +
-				"    \"param\": \"line_items[0][price_data][currency]\",\n" +
-				"    \"request_log_url\": \"https://dashboard.stripe.com/test/logs/req_VSdomoD7qM6H1H?t=1756279898\",\n" +
-				"    \"type\": \"invalid_request_error\"\n" +
-				"  }\n" +
-				"}";
-		
-		String response = chatClient.prompt()
-				.system("You are an technical analyst. which just retunrs 1 line summary of the json error")
-				.user(promptUserSpec -> promptUserSpec
-						.text(promptTemplate)
-						.param("error_json", errorJson))
-				.call()
-				.content();
-		return "Initialized";
-	}
+	
 	
 }

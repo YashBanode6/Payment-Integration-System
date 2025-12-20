@@ -38,10 +38,4 @@ src/main/java/com/example/demo/config/
 src/main/java/com/example/demo/constant/
 src/main/java/com/example/demo/exception/
 src/main/java/com/example/demo/http/
-src/main/java/com/example/demo/service/helper/
-src/main/java/com/example/demo/service/impl/
-src/main/java/com/example/demo/util/
 
-###Ignoring Specific Java Classes ###
-src/main/java/com/example/demo/pojo/ErrorResponse.java
-src/main/java/com/example/demo/pojo/PaymentResponse.java

@@ -32,10 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-###Ignore specific Java packages (folders)###
-src/main/java/com/example/demo/repository/
-src/main/java/com/example/demo/config/
-src/main/java/com/example/demo/constant/
-src/main/java/com/example/demo/exception/
-src/main/java/com/example/demo/http/
 

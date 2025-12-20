@@ -24,17 +24,17 @@ public class CreatePaymentHelper {
 	public HttpRequest prepareHttpRequest(CreatePayment createPayment) {
 		HttpHeaders headers = new HttpHeaders();
 		
-		headers.setBasicAuth(stripeApiKey, Constants.EmptyString);
+		headers.setBasicAuth(stripeApiKey, Constants.EMPTYSTRING);
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 		
 		
 		MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
 	        
-		requestBody.add(Constants.MODE, Constants.MODE_TYPE);
+		requestBody.add(Constants.MODE, Constants.MODE_PAYMENT);
 	        
-		requestBody.add(Constants.SUCCESSURL, "https://example.com/success");
+		requestBody.add(Constants.SUCCESS_URL, "https://example.com/success");
 
-		requestBody.add(Constants.CANCELURL, "https://example.com/cancel");
+		requestBody.add(Constants.CANCEL_URL, "https://example.com/cancel");
 	       
 		for (int i = 0; i < createPayment.getListItems().size(); i++) {
 			ListItem lineItem = createPayment.getListItems().get(i);

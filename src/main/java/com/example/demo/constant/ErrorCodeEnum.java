@@ -9,6 +9,7 @@ public enum ErrorCodeEnum {
     INVALID_QUANTITY("40001", "Invalid quantity. Provide 1 or more for item quantity."),
     UNABLE_TO_CONNECT_TO_STRIPE("40002", "Unable to connect to Stripe Server."),
     PAYMENT_CREATION_FAILED("40003", "Payment creation failed."), 
+    GET_PAYMENT_FAILED("40005", "Retrivel of payment failed."),
     STRIPE_ERROR("40004", "");
 
     private final String errorCode;

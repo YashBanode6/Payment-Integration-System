@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,5 +35,16 @@ public class PaymentsController {
 		log.info("Creating payment controller || response :{}");
 		
 		return response;
+	}
+	
+	@GetMapping("{id}")
+	public String getPaymentStatus(@PathVariable("id") String paymentId) {
+		log.info("Get Payment Status || paymentId :{}", paymentId);
+
+		String status = paymentService.getPaymentStatus(paymentId);
+
+		log.info("Get Payment Status || status :{}", status);
+
+		return status + paymentId;
 	}
 }

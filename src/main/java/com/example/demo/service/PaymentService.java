@@ -5,4 +5,6 @@ import com.example.demo.pojo.PaymentResponse;
 
 public interface PaymentService {
 	PaymentResponse createPayment(CreatePayment createPayment);
+	
+	String getPaymentStatus(String paymentId);
 }
